@@ -1,0 +1,13 @@
+{
+  "name": "twitter-searcher",
+  "version": "0.0.1",
+  "description": "Searches Twitter for text and stores results.",
+  "main": "index.js",
+  "author": "Andrew Couch",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "q": "~1.0.0",
+    "q-io": "~1.11.0",
+    "btoa": "~1.1.1"
+  }
+}
