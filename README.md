@@ -5,14 +5,14 @@ Tinker project to learn q promises in Node.js. Aim is to create an app that can 
 ##Use
 
 As normal with Node, download the project and run 
-...
+```
 npm install
-...
+```
 There are only a few dependancies at the moment. q, q-io and btoa.
 
 Construct a *config.json* file for the project
 
-...json
+```json
 { 
 	"consumer_key": "",
 	"consumer_secret": "",
@@ -20,13 +20,13 @@ Construct a *config.json* file for the project
 		{ "q": "kindle deal", "since_id": "439689228801552384" } 
   	] 
 }
-...
+```
 *queries* will accept an array of queries. 
 
 Run 
-...
+```
 node index
-...
+```
 
 ##Notes and Todo
 
