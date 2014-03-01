@@ -1,11 +1,13 @@
 var q = require('q'),
-	qiohttp = require('q-io/http'),
 	btoa = require('btoa'),
 	http = require('https'),
 	config_loader = require('./config');
 
+//Module reads the access_token from the config file and generates a bearer token from it.
+
 var access_token = '';
 
+//Promised request.
 function promise_request()
 {
 	return q.when(prepare_key(),function(key)
@@ -51,7 +53,7 @@ function promise_request()
 	});	
 }
 
-
+//Returns a promise for an access_token as a string.
 module.exports = function get_token()
 {
 	return promise_request()
@@ -64,18 +66,13 @@ module.exports = function get_token()
 				throw new Error("Invalid Token Type:" + res_json.token_type);
 			}
 			return res_json.access_token;
-		})
-		.then(null, record_failure);
-}
-function record_failure(error)
-{
-	console.log(error.message);
-	console.log(error.stack);
+		});
 }
 
+//Twitter requires some massaging of the key and secret.
 function prepare_key()
 {
-	return config_loader().then(function(config)
+	return config_loader.read().then(function(config)
 	{
 		var cKey = encodeURIComponent(config.consumer_key);
 		var cSecret = encodeURIComponent(config.consumer_secret);
